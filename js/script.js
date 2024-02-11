@@ -20,7 +20,7 @@ function reserva (reserva, stock, horas, saldo, precioHora){
         alert("El stock disponible es de "+stock+" bicicletas. Por favor vuelva a intentar");
         reserva = parseInt(prompt("Ingrese la cantidad de bicicletas que desea reservar:"));        
         }
-        /*stock -= reserva; //ver como lograr que se actualice la variable de stock en el scope global*/
+        stock -= reserva;
         horas = parseInt(prompt("Ingrese la cantidad de horas a reservar (el máximo permitido es de 8 horas)"));
         while ((horas < 1) || (horas > 8)){
             if (horas <1){
@@ -32,7 +32,7 @@ function reserva (reserva, stock, horas, saldo, precioHora){
         }
         saldo = (reserva * horas) * precioHora; // esto podria ser una funcion dentro de una funcion? VER
         alert("Ud ha reservado "+reserva+ " bicicleta(s) por "+horas+ " horas, debe abonar $"+saldo); 
-        return (reserva);
+        return (reserva); //esto está bien?
 }
 
 //simulación
@@ -40,11 +40,17 @@ alert("Bienvenido/a a Charlie's Rentals \n¡El mejor rental de bicicletas!");
 opcion = prompt("Seleccione una opción: \n 1)Bicicleta MTB básica \n 2)Bicicleta MTB premium \n 3)Consultar stock de bicis \n 4)Salir");
 while (opcion != "4"){
     if (opcion == "1"){
-        reserva(reservaBasicas, stockBasicas, horasReservadas, saldoReserva, precioHoraBasica);       
-        /*stockBasicas = stockBasicas - reservaBasicas; //ver como lograr que se actualice la variable de stock en el scope global*/
+        reservaBasicas = reserva(reservaBasicas, stockBasicas, horasReservadas, saldoReserva, precioHoraBasica);
+        stockBasicas -= reservaBasicas;
+        //console.log(reservaBasicas)
+        //console.log(stockBasicas);;
+
     }else if (opcion == "2"){
-        reserva(reservaPremium, stockPremium, horasReservadas, saldoReserva, precioHoraPremium);
-        /*stockPremium -= reservaPremium; //ver como lograr que se actualice la variable de stock en el scope global*/
+        reservaPremium = reserva(reservaPremium, stockPremium, horasReservadas, saldoReserva, precioHoraPremium);
+        stockPremium -= reservaPremium;
+        //console.log(reservaPremium);
+        //console.log(stockPremium);
+        
     }else if (opcion == "3"){
         alert("El stock disponible es:\n Bicicletas MTB básicas: "+stockBasicas+"\n Bicicletas MTB premium "+stockPremium);
     }else{
@@ -52,4 +58,5 @@ while (opcion != "4"){
     }
     opcion = prompt("Seleccione una opción: \n 1)Bicicleta MTB básica \n 2)Bicicleta MTB premium \n 3)Consultar stock de bicis \n 4)Salir");
 }
+
 alert("Gracias por utilizar nuestro servicio \n¡Hasta la próxima!");
