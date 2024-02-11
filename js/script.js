@@ -1,7 +1,7 @@
 
 //declaración de variables
 
-let email = "";
+
 let opcion = "";
 let stockBasicas = 5;
 let stockPremium = 3;
