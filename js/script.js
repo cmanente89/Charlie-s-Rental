@@ -74,14 +74,7 @@ while (true) {
             } else {
                 for (const reserva of reservas) {
                     alert(
-                        "Tipo: " +
-                        reserva.tipo +
-                        "\nCantidad: " +
-                        reserva.cantidad +
-                        "\nHoras: " +
-                        reserva.horas +
-                        "\nSaldo: $" +
-                        reserva.saldo
+                        "Tipo: " + reserva.tipo + "\nCantidad: " + reserva.cantidad + "\nHoras: " + reserva.horas + "\nSaldo: $" + reserva.saldo
                     );
                 }
             }
