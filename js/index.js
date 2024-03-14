@@ -1,3 +1,5 @@
+
+//borrar!
 {/* <div class="formulario">
     <div class="tipo-bicicleta">
         <label for="exampleSelect1" class="form-label mt-4">Seleccione el tipo de bicicleta</label>
@@ -25,17 +27,40 @@
     <button type="submit" id="submitButton">Calcular</button>
 </div> */}
 
+
+
 const seleccionTipo = document.getElementById("seleccion-tipo");
-const seleccionCantidad = document.getElementById("seleccion-cantidad");
-const seleccionHoras = document.getElementById("seleccion-horas");
+// const valorAnterior = null;
+
+seleccionTipo.addEventListener("change", () => {
+    const valorActual = document.getElementById("seleccion-tipo").value;
+    console.log(valorActual)
+});
+
+
+
+
+const seleccionCantidad = document.getElementById("seleccion-cantidad").value;
+const seleccionHoras = document.getElementById("seleccion-horas").value;
+
+
 const botonReservar = document.getElementById("boton-reserva");
+// console.log(botonReservar);
+
+botonReservar.addEventListener("click", () => {
+    console.log("funciona");
+});
+
+
+// console.log(seleccionTipo);
+// console.log(seleccionCantidad);
+// console.log(seleccionHoras);
+// console.log(seleccionTipo);
 
 
 
+let prueba = document.getElementById("probando");
+console.log(prueba.innerText);
 
-console.log(seleccionTipo);
-console.log(seleccionCantidad);
-console.log(seleccionHoras);
-console.log(botonReservar);
 
 
