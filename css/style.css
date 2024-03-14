@@ -1,0 +1,56 @@
+/* ver el reset */
+
+
+
+body
+/*!mejorar las imagenes!*/
+
+.contenedor {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+
+.carousel-item {
+    height: 400px;
+    width: 100%;
+    margin: 0 auto;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+}
+
+.carousel-inner {
+
+
+    margin-top: 20px;
+}
+
+.carousel-inner img {
+    height: 100%;
+    width: auto
+}
+
+
+/* modificar el placeholder */
+.form-control {
+    background-color: #f8f9fa;
+
+}
+
+.formulario {
+    background-color: #db301d;
+    margin: 50px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.btn-secondary {
+    margin: 30px;
+}
