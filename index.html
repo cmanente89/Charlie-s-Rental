@@ -89,45 +89,99 @@
     <h1 id="probando">PROBANDO PROBANDO</h1>
 
     <!-- contenido dinámico -->
-    <div id="mensaje-error" style="color: red;"></div>
+    <div id="error-message" style="color: red;"></div>
 
 
-    <div class="formulario">
-        <div class="tipo-bicicleta">
-            <label for="exampleSelect1" class="form-label mt-4">Seleccione el tipo de bicicleta</label>
-            <select class="form-select" id="seleccion-tipo">
-                <option>Seleccione una opción</option>
-                <option>Básica</option>
-                <option>Premium</option>
-            </select>
-        </div>
-        <div class="cantidad-bicicletas">
+    <div class="formulario-container">
+        <div class="formulario-basica">
             <div>
-                <label class="col-form-label mt-4" for="inputDefault">Seleccion la cantidad de bicicletas</label>
-                <input type="text" class="form-control" placeholder=" " id="seleccion-cantidad">
+                <h2>Vairo 3.8 rodado 29</h2>
+                <h3>Opción básica</h3>
+                <img src="./img/vairo-3_8-29-basica.jpg" alt="bicicleta vairo 3.8 mtb rodado 29">
             </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="check-basica">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Opción Básica
+                </label>
+              </div>
+            <div class="cantidad-bicicletas">
+                <div>
+                    <label class="col-form-label mt-4" for="inputDefault">Seleccion la cantidad de bicicletas</label>
+                    <input type="text" class="form-control" placeholder=" " id="seleccion-cantidad-basica">
+                </div>
+            </div>
+            <div class="cantidad-horas">
+                <label for="exampleSelect1" class="form-label mt-4">Seleccione la cantidad de horas</label>
+                <select class="form-select" id="seleccion-horas-basica">
+                    <option>Seleccione las horas</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                </select>
+            </div>
+            <!-- <button type="button" class="btn btn-secondary btn-lg" id="boton-reserva-basica">Agregar</button> -->
         </div>
-        <div class="cantidad-horas">
-            <label for="exampleSelect1" class="form-label mt-4">Seleccione la cantidad de horas</label>
-            <select class="form-select" id="seleccion-horas">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-            </select>
+
+
+        <div class="formulario-premium">
+                <div>
+                    <h2>Specialized specialized specialized</h2>
+                    <h3>Opción premium</h3>
+                    <img src="./img/main (1).jpg" alt="bicicleta specialized rockhopper expert 29 opcion premium">
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="check-premium">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      Opción Premium
+                    </label>
+                  </div>
+                <div class="cantidad-bicicletas">
+                    <div>
+                        <label class="col-form-label mt-4" for="inputDefault">Seleccion la cantidad de bicicletas</label>
+                        <input type="text" class="form-control" placeholder=" " id="seleccion-cantidad-premium">
+                    </div>
+                </div>
+                <div class="cantidad-horas">
+                    <label for="exampleSelect1" class="form-label mt-4">Seleccione la cantidad de horas</label>
+                    <select class="form-select" id="seleccion-horas-premium">
+                        <option>Seleccione las horas</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                    </select>
+                </div>
+                <!-- <button type="button" class="btn btn-secondary btn-lg" id="boton-reserva-premium">Agregar</button> -->
+            </div>
+
+            <div class="detalle-reserva">
+                <button type="button" class="btn btn-secondary btn-lg" id="boton-calcular">Calcular Reserva</button>
+                <h3>Su reserva:</h3>
+                <!-- contenido dinámico -->
+            <div id="reservation-details"></div>
+
         </div>
-        <button type="button" class="btn btn-secondary btn-lg" id="boton-reserva">Reservar</button>
 
-        <!-- contenido dinámico -->
-        <div id="reservation-details"></div>
+        
 
-    </div>
+
+        </div>
+
+    
 
     <div class="contenedor">
+
+        
 
         <!-- mi archivo js -->
 

@@ -41,14 +41,33 @@ body
 
 }
 
-.formulario {
-    background-color: #db301d;
-    margin: 50px auto;
+.formulario-container {
+    
+    margin: 20px auto;
     padding: 20px;
     display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: space-around;
+    /* width: 50%; */
+}
+
+.formulario-container div{
+    background-color: #db301d;
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 50%;
+    justify-content: space-around;
+    align-items:center;
+    margin: 20px;
+} 
+.formulario-container div div{
+    margin: 10px;
+    padding: 5px;
+}
+
+.formulario-container img{
+    height: auto;
+    width: auto;
 }
 
 .btn-secondary {

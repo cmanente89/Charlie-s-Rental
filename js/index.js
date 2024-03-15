@@ -14,83 +14,171 @@ const bicicletas = {
         tipoBicicleta: "Premium",
         precioHora: 2000,
         stock: 3,
-        img: "../img/specialized-rockhopper-expert-29-premium.webp",
+        img: "../img/...",
     },
 };
 
 // Arrays
 const reservas = [];
 
-//formulario: variables y eventos
-const seleccionTipo = document.getElementById("seleccion-tipo");
-seleccionTipo.addEventListener("change", () => {
-    const valorActual = document.getElementById("seleccion-tipo").value;
-    console.log(valorActual)
-    localStorage.setItem("tipoBicicleta", valorActual);
+const checkboxBasica = document.getElementById("check-basica");
+
+checkboxBasica.addEventListener("change", function() {
+    const isChecked = checkboxBasica.checked;
+    console.log("Checkbox checked:", isChecked);
+    localStorage.setItem("checkedbox Basica", "checked")
 });
 
-const seleccionCantidad = document.getElementById("seleccion-cantidad");
-seleccionCantidad.addEventListener("change", function () {
-    const cantidad = parseInt(seleccionCantidad.value);
+const seleccionCantidadBasica = document.getElementById("seleccion-cantidad-basica");
+seleccionCantidadBasica.addEventListener("change", () => {
+    const cantidad = parseInt(seleccionCantidadBasica.value);
     console.log("Cantidad de bicicletas:", cantidad);
-    localStorage.setItem("cantidadBicicletas", cantidad);
+    localStorage.setItem("cantidadBicicletasBasica", cantidad);
 });
 
-const seleccionHoras = document.getElementById("seleccion-horas");//por que sin el value? ver diferencia con el anterior
-seleccionHoras.addEventListener("change", () => {
-    const horas = seleccionHoras.value;
+const seleccionHorasBasica = document.getElementById("seleccion-horas-basica");//por que sin el value? ver diferencia con el anterior
+seleccionHorasBasica.addEventListener("change", () => {
+    const horas = seleccionHorasBasica.value;
     console.log(horas);
-    localStorage.setItem("horasSeleccionadas", horas);
+    localStorage.setItem("horasSeleccionadasBasica", horas);
 });
 
-const botonReservar = document.getElementById("boton-reserva");
+// const botonReservarBasica = document.getElementById("boton-reserva-basica");
+// botonReservarBasica.addEventListener("click", ()=>{
+//     console.log("funciona");
+//     //localStorage.setItem("chequeo de boton", "funciona")
+// })
 
-// Funcion para calcular la reserva
-function calcularMontoReserva() {
-    const tipoBicicleta = localStorage.getItem("tipoBicicleta");
-    const bike = bicicletas[tipoBicicleta];
-    const cantidad = parseInt(localStorage.getItem("cantidadBicicletas"));
-    const horas = parseInt(localStorage.getItem("horasSeleccionadas"));
+const checkboxPremium = document.getElementById("check-premium");
 
-    // funcion de mensaje dinamico de error de stock
+checkboxPremium.addEventListener("change", function() {
+    const isChecked = checkboxPremium.checked;
+    console.log("Checkbox checked:", isChecked);
+    localStorage.setItem("checkedbox Premium", "checked")
+});
+
+const seleccionCantidadPremium = document.getElementById("seleccion-cantidad-premium");
+seleccionCantidadPremium.addEventListener("change", () => {
+    const cantidad = parseInt(seleccionCantidadPremium.value);
+    console.log("Cantidad de bicicletas:", cantidad);
+    localStorage.setItem("cantidadBicicletasPremium", cantidad);
+});
+
+const seleccionHorasPremium = document.getElementById("seleccion-horas-premium");//por que sin el value? ver diferencia con el anterior
+seleccionHorasPremium.addEventListener("change", () => {
+    const horas = seleccionHorasPremium.value;
+    console.log(horas);
+    localStorage.setItem("horasSeleccionadasPremium", horas);
+});
+
+// const botonReservarPremium = document.getElementById("boton-reserva-premium");
+// botonReservarPremium.addEventListener("click", ()=>{
+//     console.log("funciona2");
+//     //localStorage.setItem("chequeo de boton2", "funciona2")
+// })
+
+const botonCalcular = document.getElementById("boton-calcular");
+botonCalcular.addEventListener("click", ()=>{
+    console.log("funciona");
+    //localStorage.setItem("chequeo de boton", "funciona")
+})
+
+
+function calcularReserva() {
+    const checkedboxBasica = localStorage.getItem("checkedbox Basica") === "checked";
+    const cantidadBasica = parseInt(localStorage.getItem("cantidadBicicletasBasica"));
+    const horasBasica = parseInt(localStorage.getItem("horasSeleccionadasBasica"));
+    const checkedboxPremium = localStorage.getItem("checkedbox Premium") === "checked";
+    const cantidadPremium = parseInt(localStorage.getItem("cantidadBicicletasPremium"));
+    const horasPremium = parseInt(localStorage.getItem("horasSeleccionadasPremium"));
+
     const errorMessage = document.getElementById("error-message");
-    if (cantidad > bike.stock) {
-        errorMessage.innerHTML = "La cantidad de stock seleccionada es superior al disponible";
-        return;
+
+    if (checkedboxBasica) {
+        const bikeBasica = bicicletas["Básica"];
+        if (cantidadBasica > bikeBasica.stock) {
+            errorMessage.innerHTML = "La cantidad de bicicletas básicas seleccionada supera el stock disponible";
+            return;//!VER DE METER UNA FUNCION PORQUE ESTO SE REPITE
+        }
     }
 
-    // si no hay error se limpia
+    if (checkedboxPremium) {
+        const bikePremium = bicicletas["Premium"];
+        if (cantidadPremium > bikePremium.stock) {
+            errorMessage.innerHTML = "La cantidad de bicicletas premium seleccionada supera el stock disponible";
+            return;
+        }
+    }
+
     errorMessage.innerHTML = "";
-    const total = bike.precioHora * horas * cantidad;
-    const reservationNumber = Math.floor(Math.random() * 1000000); // Generate a random 6-digit number
+
+    let totalBasica = 0;
+    if (checkedboxBasica) {
+        const bikeBasica = bicicletas["Básica"];
+        totalBasica = bikeBasica.precioHora * horasBasica * cantidadBasica;
+        bikeBasica.stock -= cantidadBasica;
+        console.log(bicicletas["Básica"]["stock"]);
+    }
+
+    let totalPremium = 0;
+    if (checkedboxPremium) {
+        const bikePremium = bicicletas["Premium"];
+        totalPremium = bikePremium.precioHora * horasPremium * cantidadPremium;
+        bikePremium.stock -= cantidadPremium;
+        console.log(bicicletas["Premium"]["stock"]);
+    }
+
+    const total = totalBasica + totalPremium;
+
+    const reservationNumber = Math.floor(Math.random() * 900000) + 100000;
     const reservation = {
         numero: reservationNumber,
-        tipo: bike.nombre,
-        cantidad,
-        horas,
-        saldo: total
+        tipoBasica: checkedboxBasica ? "Básica" : "",
+        cantidadBasica: cantidadBasica || 0,
+        horasBasica: horasBasica || 0,
+        subtotalBasica: totalBasica,
+        tipoPremium: checkedboxPremium ? "Premium" : "",
+        cantidadPremium: cantidadPremium || 0,
+        horasPremium: horasPremium || 0,
+        subtotalPremium: totalPremium,
+        total: total
     };
-    reservas.push(reservation);
 
-    // guardo en local storage
+    localStorage.clear();
+
+    reservas.push(reservation);
     localStorage.setItem("reservas", JSON.stringify(reservas));
 
-    // detalles de la reserva se muestran dinamicamente en el html
     const reservationDetailsDiv = document.getElementById("reservation-details");
     reservationDetailsDiv.innerHTML = `
         <h3>Detalles de la Reserva</h3>
         <p>Número de Reserva: ${reservation.numero}</p>
-        <p>Tipo de Bicicleta: ${reservation.tipo}</p>
-        <p>Cantidad: ${reservation.cantidad}</p>
-        <p>Horas: ${reservation.horas}</p>
-        <p>Total: ${reservation.saldo}</p>
+        ${checkedboxBasica ? `<p>Tipo de Bicicleta Básica: ${reservation.tipoBasica}</p>
+        <p>Cantidad Básica: ${reservation.cantidadBasica}</p>
+        <p>Horas Básica: ${reservation.horasBasica}</p>
+        <p>Subtotal Básica: ${reservation.subtotalBasica}</p>` : ""}
+        ${checkedboxPremium ? `<p>Tipo de Bicicleta Premium: ${reservation.tipoPremium}</p>
+        <p>Cantidad Premium: ${reservation.cantidadPremium}</p>
+        <p>Horas Premium: ${reservation.horasPremium}</p>
+        <p>Subtotal Premium: ${reservation.subtotalPremium}</p>` : ""}
+        <p>Total: ${reservation.total}</p>
     `;
 
-    console.log("Reservation details:", reservation);
-    console.log("Total reservation amount:", total);
+    
 }
 
-botonReservar.addEventListener("click", calcularMontoReserva);
+botonCalcular.addEventListener("click", calcularReserva)
 
-//ver como hacer para que no aparezcan el error y el detalle de reserva anterior juntos
+
+
+
+
+
+
+
+
+
+
+
+
 
