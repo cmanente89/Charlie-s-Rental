@@ -1,66 +1,96 @@
 
-//borrar!
-{/* <div class="formulario">
-    <div class="tipo-bicicleta">
-        <label for="exampleSelect1" class="form-label mt-4">Seleccione el tipo de bicicleta</label>
-        <select class="form-select" id="rentalForm_bikeType">  <option>Básica</option>
-            <option>Premium</option>
-        </select>
-    </div>
-    <div class="cantidad-bicicletas">
-        <div>
-            <label class="col-form-label mt-4" for="inputDefault">Seleccion la cantidad de bicicletas</label>
-            <input type="text" class="form-control" placeholder=" " id="rentalForm_quantity">  </div>
-    </div>
-    <div class="cantidad-horas">
-        <label for="exampleSelect1" class="form-label mt-4">Seleccione la cantidad de horas</label>
-        <select class="form-select" id="rentalForm_duration">  <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-        </select>
-    </div>
-    <button type="submit" id="submitButton">Calcular</button>
-</div> */}
 
+// Objetoss
+const bicicletas = {
+    "Básica": {
+        nombre: "Vairo 3.8 rodado 29",
+        tipoBicicleta: "Básica",
+        precioHora: 1000,
+        stock: 5,
+        img: "../img/vairo-3_8-29-basica.jpg"
+    },
+    "Premium": {
+        nombre: "Specialized Rockhopper Expert rodado29",
+        tipoBicicleta: "Premium",
+        precioHora: 2000,
+        stock: 3,
+        img: "../img/specialized-rockhopper-expert-29-premium.webp",
+    },
+};
 
+// Arrays
+const reservas = [];
 
+//formulario: variables y eventos
 const seleccionTipo = document.getElementById("seleccion-tipo");
-// const valorAnterior = null;
-
 seleccionTipo.addEventListener("change", () => {
     const valorActual = document.getElementById("seleccion-tipo").value;
     console.log(valorActual)
+    localStorage.setItem("tipoBicicleta", valorActual);
 });
 
+const seleccionCantidad = document.getElementById("seleccion-cantidad");
+seleccionCantidad.addEventListener("change", function () {
+    const cantidad = parseInt(seleccionCantidad.value);
+    console.log("Cantidad de bicicletas:", cantidad);
+    localStorage.setItem("cantidadBicicletas", cantidad);
+});
 
-
-
-const seleccionCantidad = document.getElementById("seleccion-cantidad").value;
-const seleccionHoras = document.getElementById("seleccion-horas").value;
-
+const seleccionHoras = document.getElementById("seleccion-horas");//por que sin el value? ver diferencia con el anterior
+seleccionHoras.addEventListener("change", () => {
+    const horas = seleccionHoras.value;
+    console.log(horas);
+    localStorage.setItem("horasSeleccionadas", horas);
+});
 
 const botonReservar = document.getElementById("boton-reserva");
-// console.log(botonReservar);
 
-botonReservar.addEventListener("click", () => {
-    console.log("funciona");
-});
+// Funcion para calcular la reserva
+function calcularMontoReserva() {
+    const tipoBicicleta = localStorage.getItem("tipoBicicleta");
+    const bike = bicicletas[tipoBicicleta];
+    const cantidad = parseInt(localStorage.getItem("cantidadBicicletas"));
+    const horas = parseInt(localStorage.getItem("horasSeleccionadas"));
 
+    // funcion de mensaje dinamico de error de stock
+    const errorMessage = document.getElementById("error-message");
+    if (cantidad > bike.stock) {
+        errorMessage.innerHTML = "La cantidad de stock seleccionada es superior al disponible";
+        return;
+    }
 
-// console.log(seleccionTipo);
-// console.log(seleccionCantidad);
-// console.log(seleccionHoras);
-// console.log(seleccionTipo);
+    // si no hay error se limpia
+    errorMessage.innerHTML = "";
+    const total = bike.precioHora * horas * cantidad;
+    const reservationNumber = Math.floor(Math.random() * 1000000); // Generate a random 6-digit number
+    const reservation = {
+        numero: reservationNumber,
+        tipo: bike.nombre,
+        cantidad,
+        horas,
+        saldo: total
+    };
+    reservas.push(reservation);
 
+    // guardo en local storage
+    localStorage.setItem("reservas", JSON.stringify(reservas));
 
+    // detalles de la reserva se muestran dinamicamente en el html
+    const reservationDetailsDiv = document.getElementById("reservation-details");
+    reservationDetailsDiv.innerHTML = `
+        <h3>Detalles de la Reserva</h3>
+        <p>Número de Reserva: ${reservation.numero}</p>
+        <p>Tipo de Bicicleta: ${reservation.tipo}</p>
+        <p>Cantidad: ${reservation.cantidad}</p>
+        <p>Horas: ${reservation.horas}</p>
+        <p>Total: ${reservation.saldo}</p>
+    `;
 
-let prueba = document.getElementById("probando");
-console.log(prueba.innerText);
+    console.log("Reservation details:", reservation);
+    console.log("Total reservation amount:", total);
+}
 
+botonReservar.addEventListener("click", calcularMontoReserva);
 
+//ver como hacer para que no aparezcan el error y el detalle de reserva anterior juntos
 

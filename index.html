@@ -88,11 +88,15 @@
 
     <h1 id="probando">PROBANDO PROBANDO</h1>
 
+    <!-- contenido dinámico -->
+    <div id="mensaje-error" style="color: red;"></div>
+
 
     <div class="formulario">
         <div class="tipo-bicicleta">
             <label for="exampleSelect1" class="form-label mt-4">Seleccione el tipo de bicicleta</label>
             <select class="form-select" id="seleccion-tipo">
+                <option>Seleccione una opción</option>
                 <option>Básica</option>
                 <option>Premium</option>
             </select>
@@ -118,14 +122,12 @@
         </div>
         <button type="button" class="btn btn-secondary btn-lg" id="boton-reserva">Reservar</button>
 
+        <!-- contenido dinámico -->
+        <div id="reservation-details"></div>
 
     </div>
 
-
-
     <div class="contenedor">
-
-
 
         <!-- mi archivo js -->
 
