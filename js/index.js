@@ -18,6 +18,11 @@ const bicicletas = {
     },
 };
 
+//cargo el stock para que me aparezca en local storage de entrada
+
+localStorage.setItem("stockBasica", bicicletas["Básica"].stock);
+localStorage.setItem("stockPremium", bicicletas["Premium"].stock);
+
 // Arrays
 const reservas = [];
 
@@ -25,7 +30,7 @@ const reservas = [];
 
 const checkboxBasica = document.getElementById("check-basica");
 
-checkboxBasica.addEventListener("change", function() {
+checkboxBasica.addEventListener("change", function () {
     const isChecked = checkboxBasica.checked;
     console.log("Checkbox checked:", isChecked);
     localStorage.setItem("checkedbox Basica", "checked")
@@ -48,7 +53,7 @@ seleccionHorasBasica.addEventListener("change", () => {
 
 const checkboxPremium = document.getElementById("check-premium");
 
-checkboxPremium.addEventListener("change", function() {
+checkboxPremium.addEventListener("change", function () {
     const isChecked = checkboxPremium.checked;
     console.log("Checkbox checked:", isChecked);
     localStorage.setItem("checkedbox Premium", "checked")
@@ -70,7 +75,7 @@ seleccionHorasPremium.addEventListener("change", () => {
 
 
 const botonCalcular = document.getElementById("boton-calcular");
-botonCalcular.addEventListener("click", ()=>{
+botonCalcular.addEventListener("click", () => {
     console.log("funciona");
 })
 
@@ -140,7 +145,7 @@ function calcularReserva() {
         total: total
     };
 
-    
+
 
     reservas.push(reservation);
     localStorage.setItem("reservas", JSON.stringify(reservas));
@@ -160,24 +165,12 @@ function calcularReserva() {
         <p>Total: ${reservation.total}</p>
     `;
 
-    
+
 }
 
 //boton para ejecutar la funcion de reserva
 
 botonCalcular.addEventListener("click", calcularReserva);
-
-//mostrar stock en nuestras-bicis.html
-//USAR EL BOTON PARA MOSTRAR STOCK, deultima poner otro boton que linkee a la reserva
-
-
-const stockBasica = localStorage.getItem("stockBasica");
-const stockPremium = localStorage.getItem("stockPremium");
-
-
-document.getElementById("display-stock-basica").innerText = stockBasica;
-document.getElementById("display-stock-premium").innerText = stockPremium;
-
 
 
 
