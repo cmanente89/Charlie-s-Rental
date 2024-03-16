@@ -63,39 +63,10 @@
             </div>
         </div>
     </nav>
-
-    <div id="carouselExampleFade" class="carousel slide carousel-fade">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="./img/carousel-1.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="./img/carousel-2.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item">
-                <img src="./img/carousel-3.jpg" class="d-block w-100" alt="...">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+    <div class="hero">
+        <h1 class="display-1">Bienvenido a Charlie's Rental</h1>
+        <h2 class="display-3">Tu rental de bicicletas en Bariloche</h2>
     </div>
-
-    <h1 id="probando">PROBANDO PROBANDO</h1>
-
-    <!-- contenido dinámico -->
-    <div id="error-message" style="color: red;"></div>
-
-    <div class="columnas-wrapper">
-
-    </div>
-
-
     <div class="formulario-container">
         <div class="formulario-basica">
             <div>
@@ -103,12 +74,12 @@
                 <h3>Opción básica</h3>
                 <img src="./img/vairo-3_8-29-basica.jpg" alt="bicicleta vairo 3.8 mtb rodado 29 opción básica">
             </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="check-basica">
+            <div class="form-check d-flex flex-row justify-content-evenly">
+                <input class="form-check-input mx-2" type="checkbox" value="" id="check-basica">
                 <label class="form-check-label" for="flexCheckDefault">
-                  Opción Básica
+                    Opción Básica
                 </label>
-              </div>
+            </div>
             <div class="cantidad-bicicletas">
                 <div>
                     <label class="col-form-label mt-4" for="inputDefault">Seleccion la cantidad de bicicletas</label>
@@ -134,82 +105,91 @@
 
 
         <div class="formulario-premium">
-                <div>
-                    <h2>Specialized specialized specialized</h2>
-                    <h3>Opción premium</h3>
-                    <img src="./img/main (1).jpg" alt="bicicleta specialized rockhopper expert 29 opcion premium">
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="check-premium">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Opción Premium
-                    </label>
-                  </div>
-                <div class="cantidad-bicicletas">
-                    <div>
-                        <label class="col-form-label mt-4" for="inputDefault">Seleccion la cantidad de bicicletas</label>
-                        <input type="text" class="form-control" placeholder=" " id="seleccion-cantidad-premium">
-                    </div>
-                </div>
-                <div class="cantidad-horas">
-                    <label for="exampleSelect1" class="form-label mt-4">Seleccione la cantidad de horas</label>
-                    <select class="form-select" id="seleccion-horas-premium">
-                        <option>Seleccione las horas</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                    </select>
-                </div>
-                <!-- <button type="button" class="btn btn-secondary btn-lg" id="boton-reserva-premium">Agregar</button> -->
+            <div>
+                <h2>Specialized specialized specialized</h2>
+                <h3>Opción premium</h3>
+                <img src="./img/main (1).jpg" alt="bicicleta specialized rockhopper expert 29 opcion premium">
             </div>
-
-            <div class="detalle-reserva">
-                
-                <h3>Su reserva:</h3>
-                <!-- contenido dinámico -->
-                <button type="button" class="btn btn-secondary btn-lg" id="boton-calcular">Calcular Reserva</button>
-            <div id="reservation-details"></div>
-
+            <div class="form-check d-flex flex-row justify-content-evenly">
+                <input class="form-check-input mx-2" type="checkbox" value="" id="check-premium">
+                <label class="form-check-label" for="flexCheckDefault">
+                    Opción Premium
+                </label>
+            </div>
+            <div class="cantidad-bicicletas">
+                <div>
+                    <label class="col-form-label mt-4" for="inputDefault">Seleccion la cantidad de bicicletas</label>
+                    <input type="text" class="form-control" placeholder=" " id="seleccion-cantidad-premium">
+                </div>
+            </div>
+            <div class="cantidad-horas">
+                <label for="exampleSelect1" class="form-label mt-4">Seleccione la cantidad de horas</label>
+                <select class="form-select" id="seleccion-horas-premium">
+                    <option>Seleccione las horas</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                </select>
+            </div>
+            <!-- <button type="button" class="btn btn-secondary btn-lg" id="boton-reserva-premium">Agregar</button> -->
         </div>
 
-        
 
 
     </div>
 
-    
+    <div class="reserva-wrapper">
+        <div class="detalle-reserva">
 
-        
+            <h3>Su reserva:</h3>
+            <!-- contenido dinámico -->
+            <div id="error-message" style="color: red;"></div>
+            <!-- contenido dinámico -->
+            <button type="button" class="btn btn-secondary btn-lg" id="boton-calcular">Calcular Reserva</button>
+            <div id="reservation-details"></div>
+
+
+
+
+        </div>
+    </div>
+
+
+
+
     <footer class="d-flex flex-wrap justify-content-between align-items-center py-5 my-4 border-top">
         <p class="col-md-4 mb-0 text-body-primary">© 2024 Company, Inc</p>
-    
-        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+
+        <a href="/"
+            class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <svg class="bi me-2" width="40" height="32">
+                <use xlink:href="#bootstrap"></use>
+            </svg>
         </a>
-    
+
         <ul class="nav col-md-4 justify-content-end">
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
-          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+            <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
         </ul>
-      </footer>
-        
+    </footer>
 
-        <!-- mi archivo js -->
 
-        <script src="./js/index.js"></script>
+    <!-- mi archivo js -->
 
-        <!-- bootstrap js -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-            integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-            crossorigin="anonymous"></script>
+    <script src="./js/index.js"></script>
+
+    <!-- bootstrap js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
 </body>
 
 </div>

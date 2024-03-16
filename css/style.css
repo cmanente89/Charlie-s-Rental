@@ -13,36 +13,27 @@
 
 
 
-.carousel-item {
-    height: 400px;
-    width: 100%;
-    margin: 0 auto;
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
+.hero {
+    padding: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border: 2px solid red;
+    text-align: center;
+    background-image: url("../img/carousel-1.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #f8f9fa;
+    text-shadow: 3px 2px black;
 }
-
-.carousel-inner {
-
-
-    margin-top: 20px;
-}
-
-.carousel-inner img {
-    height: 100%;
-    width: auto
-}
-
 
 /* modificar el placeholder */
 .form-control {
     background-color: #f8f9fa;
-
 }
 
 .formulario-container {
 
-    
+
     margin: 20px auto;
     padding: 20px;
     display: flex;
@@ -50,72 +41,84 @@
     /* align-items:center; */
     justify-content: space-around;
     /* width: 50%; */
-   
+}
+
+.formulario-container div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+
+
+}
+
+.formulario-container div div {
+    margin: 10px;
+    padding: 5px;
+
 }
 
 .formulario-basica {
     border: 2px solid #db301d;
     flex-basis: 100%;
-    
+    box-shadow: 3px 3px blue;
+
 }
+
 .formulario-premium {
     border: 2px solid #db301d;
     flex-basis: 100%;
-
-}
-.detalle-reserva {
-    border: 2px solid #db301d;
-    flex-basis: 100%;
+    box-shadow: 3px 3px blue;
 
 }
 
-
-
-.formulario-container div{
-    
-    
-    /* background-color:#f8f9fa; */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items:center;
-    margin: 20px;
-    
-} 
-.formulario-container div div{
-    margin: 10px;
-    padding: 5px;
-}
-
-.formulario-container img{
+.formulario-container img {
     height: auto;
     width: auto;
-    
 }
 
 .btn-secondary {
     margin: 30px;
 }
 
-/*!NUESTRAS BICIS*/
-
-.modelos{
-    padding: 50px;
+.reserva-wrapper {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    
 }
 
-.modelo-basico{
+.detalle-reserva {
     border: 2px solid #db301d;
-    
-    
-
+    flex-basis: 50%;
+    /* width: 80%; */
+    text-align: center;
+    padding: 100px;
+    box-shadow: 3px 3px blue;
 }
-.modelo-premium{
+
+/*!NUESTRAS BICIS*/
+
+.modelos {
+    /* padding: 50px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card img {
+    width: 50%;
+}
+
+.modelo-basico {
     border: 2px solid #db301d;
-    
-    
+    box-shadow: 3px 3px blue;
+    margin: 30px;
+}
+
+.modelo-premium {
+    border: 2px solid #db301d;
+    box-shadow: 3px 3px blue;
 }
