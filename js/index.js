@@ -1,25 +1,27 @@
 
 
-// Objetoss
+// Objetos
 const bicicletas = {
     "Básica": {
         nombre: "Vairo 3.8 rodado 29",
         tipoBicicleta: "Básica",
         precioHora: 1000,
-        stock: 5,
+        stock: 15,
         img: "../img/vairo-3_8-29-basica.jpg"
     },
     "Premium": {
         nombre: "Specialized Rockhopper Expert rodado29",
         tipoBicicleta: "Premium",
         precioHora: 2000,
-        stock: 3,
+        stock: 10,
         img: "../img/...",
     },
 };
 
 // Arrays
 const reservas = [];
+
+//variables y eventos asociados
 
 const checkboxBasica = document.getElementById("check-basica");
 
@@ -43,11 +45,6 @@ seleccionHorasBasica.addEventListener("change", () => {
     localStorage.setItem("horasSeleccionadasBasica", horas);
 });
 
-// const botonReservarBasica = document.getElementById("boton-reserva-basica");
-// botonReservarBasica.addEventListener("click", ()=>{
-//     console.log("funciona");
-//     //localStorage.setItem("chequeo de boton", "funciona")
-// })
 
 const checkboxPremium = document.getElementById("check-premium");
 
@@ -71,18 +68,13 @@ seleccionHorasPremium.addEventListener("change", () => {
     localStorage.setItem("horasSeleccionadasPremium", horas);
 });
 
-// const botonReservarPremium = document.getElementById("boton-reserva-premium");
-// botonReservarPremium.addEventListener("click", ()=>{
-//     console.log("funciona2");
-//     //localStorage.setItem("chequeo de boton2", "funciona2")
-// })
 
 const botonCalcular = document.getElementById("boton-calcular");
 botonCalcular.addEventListener("click", ()=>{
     console.log("funciona");
-    //localStorage.setItem("chequeo de boton", "funciona")
 })
 
+//funcion para reservar
 
 function calcularReserva() {
     const checkedboxBasica = localStorage.getItem("checkedbox Basica") === "checked";
@@ -93,6 +85,8 @@ function calcularReserva() {
     const horasPremium = parseInt(localStorage.getItem("horasSeleccionadasPremium"));
 
     const errorMessage = document.getElementById("error-message");
+
+    localStorage.clear();
 
     if (checkedboxBasica) {
         const bikeBasica = bicicletas["Básica"];
@@ -118,6 +112,7 @@ function calcularReserva() {
         totalBasica = bikeBasica.precioHora * horasBasica * cantidadBasica;
         bikeBasica.stock -= cantidadBasica;
         console.log(bicicletas["Básica"]["stock"]);
+        localStorage.setItem("stockBasica", bikeBasica.stock);
     }
 
     let totalPremium = 0;
@@ -125,7 +120,8 @@ function calcularReserva() {
         const bikePremium = bicicletas["Premium"];
         totalPremium = bikePremium.precioHora * horasPremium * cantidadPremium;
         bikePremium.stock -= cantidadPremium;
-        console.log(bicicletas["Premium"]["stock"]);
+        console.log(bicicletas["Premium"]["stock"]);//!VER DE METER UNA FUNCION PORQUE ESTO SE REPITE
+        localStorage.setItem("stockPremium", bikePremium.stock);
     }
 
     const total = totalBasica + totalPremium;
@@ -144,7 +140,7 @@ function calcularReserva() {
         total: total
     };
 
-    localStorage.clear();
+    
 
     reservas.push(reservation);
     localStorage.setItem("reservas", JSON.stringify(reservas));
@@ -167,7 +163,23 @@ function calcularReserva() {
     
 }
 
-botonCalcular.addEventListener("click", calcularReserva)
+//boton para ejecutar la funcion de reserva
+
+botonCalcular.addEventListener("click", calcularReserva);
+
+//mostrar stock en nuestras-bicis.html
+//USAR EL BOTON PARA MOSTRAR STOCK, deultima poner otro boton que linkee a la reserva
+
+
+const stockBasica = localStorage.getItem("stockBasica");
+const stockPremium = localStorage.getItem("stockPremium");
+
+
+document.getElementById("display-stock-basica").innerText = stockBasica;
+document.getElementById("display-stock-premium").innerText = stockPremium;
+
+
+
 
 
 

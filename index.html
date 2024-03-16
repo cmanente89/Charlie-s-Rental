@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -36,9 +36,9 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nuestras bicis</a>
+                        <a class="nav-link" href="./html/nuestras-bicis.html">Nuestras bicis</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link" href="#">Precios</a>
                     </li>
                     <li class="nav-item">
@@ -54,12 +54,12 @@
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Separated link</a>
                         </div>
-                    </li>
+                    </li> -->
                 </ul>
-                <form class="d-flex">
+                <!-- <form class="d-flex">
                     <input class="form-control me-sm-2" type="search" placeholder="Buscar">
                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
-                </form>
+                </form> -->
             </div>
         </div>
     </nav>
@@ -91,13 +91,17 @@
     <!-- contenido dinámico -->
     <div id="error-message" style="color: red;"></div>
 
+    <div class="columnas-wrapper">
+
+    </div>
+
 
     <div class="formulario-container">
         <div class="formulario-basica">
             <div>
                 <h2>Vairo 3.8 rodado 29</h2>
                 <h3>Opción básica</h3>
-                <img src="./img/vairo-3_8-29-basica.jpg" alt="bicicleta vairo 3.8 mtb rodado 29">
+                <img src="./img/vairo-3_8-29-basica.jpg" alt="bicicleta vairo 3.8 mtb rodado 29 opción básica">
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="check-basica">
@@ -165,9 +169,10 @@
             </div>
 
             <div class="detalle-reserva">
-                <button type="button" class="btn btn-secondary btn-lg" id="boton-calcular">Calcular Reserva</button>
+                
                 <h3>Su reserva:</h3>
                 <!-- contenido dinámico -->
+                <button type="button" class="btn btn-secondary btn-lg" id="boton-calcular">Calcular Reserva</button>
             <div id="reservation-details"></div>
 
         </div>
@@ -175,12 +180,26 @@
         
 
 
-        </div>
+    </div>
 
     
 
-    <div class="contenedor">
-
+        
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-5 my-4 border-top">
+        <p class="col-md-4 mb-0 text-body-primary">© 2024 Company, Inc</p>
+    
+        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+    
+        <ul class="nav col-md-4 justify-content-end">
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+          <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+        </ul>
+      </footer>
         
 
         <!-- mi archivo js -->
