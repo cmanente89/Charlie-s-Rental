@@ -32,21 +32,21 @@ const checkboxBasica = document.getElementById("check-basica");
 
 checkboxBasica.addEventListener("change", function () {
     const isChecked = checkboxBasica.checked;
-    console.log("Checkbox checked:", isChecked);
+    //console.log("Checkbox checked:", isChecked);
     localStorage.setItem("checkedbox Basica", "checked")
 });
 
 const seleccionCantidadBasica = document.getElementById("seleccion-cantidad-basica");
 seleccionCantidadBasica.addEventListener("change", () => {
     const cantidad = parseInt(seleccionCantidadBasica.value);
-    console.log("Cantidad de bicicletas:", cantidad);
+    //console.log("Cantidad de bicicletas:", cantidad);
     localStorage.setItem("cantidadBicicletasBasica", cantidad);
 });
 
 const seleccionHorasBasica = document.getElementById("seleccion-horas-basica");//por que sin el value? ver diferencia con el anterior
 seleccionHorasBasica.addEventListener("change", () => {
     const horas = seleccionHorasBasica.value;
-    console.log(horas);
+    //console.log(horas);
     localStorage.setItem("horasSeleccionadasBasica", horas);
 });
 
@@ -55,28 +55,28 @@ const checkboxPremium = document.getElementById("check-premium");
 
 checkboxPremium.addEventListener("change", function () {
     const isChecked = checkboxPremium.checked;
-    console.log("Checkbox checked:", isChecked);
+    //console.log("Checkbox checked:", isChecked);
     localStorage.setItem("checkedbox Premium", "checked")
 });
 
 const seleccionCantidadPremium = document.getElementById("seleccion-cantidad-premium");
 seleccionCantidadPremium.addEventListener("change", () => {
     const cantidad = parseInt(seleccionCantidadPremium.value);
-    console.log("Cantidad de bicicletas:", cantidad);
+    //console.log("Cantidad de bicicletas:", cantidad);
     localStorage.setItem("cantidadBicicletasPremium", cantidad);
 });
 
 const seleccionHorasPremium = document.getElementById("seleccion-horas-premium");//por que sin el value? ver diferencia con el anterior
 seleccionHorasPremium.addEventListener("change", () => {
     const horas = seleccionHorasPremium.value;
-    console.log(horas);
+    //console.log(horas);
     localStorage.setItem("horasSeleccionadasPremium", horas);
 });
 
 
 const botonCalcular = document.getElementById("boton-calcular");
 botonCalcular.addEventListener("click", () => {
-    console.log("funciona");
+    //console.log("funciona");
 })
 
 //funcion para reservar
@@ -97,9 +97,9 @@ function calcularReserva() {
         const bikeBasica = bicicletas["Básica"];
         if (cantidadBasica > bikeBasica.stock) {
             errorMessage.innerHTML = "La cantidad de bicicletas básicas seleccionada supera el stock disponible";
-            return;//!VER DE METER UNA FUNCION PORQUE ESTO SE REPITE
+            return;
         }
-    }
+    }//VER DE METER UNA FUNCION PORQUE ESTO SE REPITE ABAJO
 
     if (checkedboxPremium) {
         const bikePremium = bicicletas["Premium"];
@@ -111,7 +111,7 @@ function calcularReserva() {
 
     errorMessage.innerHTML = "";
 
-    let totalBasica = 0;
+    let totalBasica = 0;//VER DE METER UNA FUNCION PORQUE ESTO SE REPITE ABAJO
     if (checkedboxBasica) {
         const bikeBasica = bicicletas["Básica"];
         totalBasica = bikeBasica.precioHora * horasBasica * cantidadBasica;
@@ -125,7 +125,7 @@ function calcularReserva() {
         const bikePremium = bicicletas["Premium"];
         totalPremium = bikePremium.precioHora * horasPremium * cantidadPremium;
         bikePremium.stock -= cantidadPremium;
-        console.log(bicicletas["Premium"]["stock"]);//!VER DE METER UNA FUNCION PORQUE ESTO SE REPITE
+        console.log(bicicletas["Premium"]["stock"]);
         localStorage.setItem("stockPremium", bikePremium.stock);
     }
 
@@ -134,11 +134,11 @@ function calcularReserva() {
     const reservationNumber = Math.floor(Math.random() * 900000) + 100000;
     const reservation = {
         numero: reservationNumber,
-        tipoBasica: checkedboxBasica ? "Básica" : "",
+        tipoBasica: checkedboxBasica ? "Básica" : "",//ternario
         cantidadBasica: cantidadBasica || 0,
         horasBasica: horasBasica || 0,
         subtotalBasica: totalBasica,
-        tipoPremium: checkedboxPremium ? "Premium" : "",
+        tipoPremium: checkedboxPremium ? "Premium" : "",//ternario
         cantidadPremium: cantidadPremium || 0,
         horasPremium: horasPremium || 0,
         subtotalPremium: totalPremium,
