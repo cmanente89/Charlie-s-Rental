@@ -17,7 +17,7 @@
     padding: 50px;
     margin-top: 30px;
     margin-bottom: 30px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     text-align: center;
     background-image: url("../img/carousel-1.jpg");
     background-size: cover;
@@ -62,14 +62,14 @@
 .formulario-basica {
     border: 2px solid #db301d;
     flex-basis: 100%;
-    box-shadow: 3px 3px blue;
+    box-shadow: 3px 3px #adb5bd;
 
 }
 
 .formulario-premium {
     border: 2px solid #db301d;
     flex-basis: 100%;
-    box-shadow: 3px 3px blue;
+    box-shadow: 3px 3px #adb5bd;
 
 }
 
@@ -95,30 +95,73 @@
     /* width: 80%; */
     text-align: center;
     padding: 100px;
-    box-shadow: 3px 3px blue;
+    box-shadow: 3px 3px #adb5bd;
+}
+
+#error-message {
+    color: red;
+    margin: 40px;
 }
 
 /*!NUESTRAS BICIS*/
 
+.hero-nuestras-bicis {
+    padding: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    /* border: 2px solid red; */
+    text-align: center;
+    background-image: url("../img/carousel-1.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #f8f9fa;
+    text-shadow: 3px 2px black;
+
+}
+
 .modelos {
     /* padding: 50px; */
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .card img {
     width: 50%;
 }
 
-.modelo-basico {
+.modelo-basica {
     border: 2px solid #db301d;
-    box-shadow: 3px 3px blue;
+    box-shadow: 3px 3px #adb5bd;
     margin: 30px;
 }
 
 .modelo-premium {
     border: 2px solid #db301d;
-    box-shadow: 3px 3px blue;
+    box-shadow: 3px 3px #adb5bd;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: auto;
+    width: auto;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/*!TU RESERVA*/
+
+.chequear-reserva {
+    margin: 50px;
+    padding: 50px;
+    border: 1px solid #db301d;
 }
