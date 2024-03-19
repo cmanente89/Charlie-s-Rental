@@ -133,7 +133,7 @@ function calcularReserva() {
 
     const reservationNumber = Math.floor(Math.random() * 900000) + 100000;
     const reservation = {
-        numero: reservationNumber,
+        numero: reservationNumber.toString(),//lo convierto a string para poder buscarlo luego
         tipoBasica: checkedboxBasica ? "Básica" : "",//ternario
         cantidadBasica: cantidadBasica || 0,
         horasBasica: horasBasica || 0,
