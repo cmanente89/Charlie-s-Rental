@@ -1,4 +1,4 @@
-/*funcionalidad no implementada aun*/
+// funcionalidad de pagina "tu reserva"
 
 document.addEventListener("DOMContentLoaded", function () {
     const consultarReservaBtn = document.querySelector(".chequear-reserva button");

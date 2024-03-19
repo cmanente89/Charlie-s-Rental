@@ -160,8 +160,29 @@
 
 /*!TU RESERVA*/
 
+.hero-tu-reserva {
+    padding: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    /* border: 2px solid red; */
+    text-align: center;
+    background-image: url("../img/carousel-1.jpg");
+    background-size: cover;
+    background-position: center;
+    color: #f8f9fa;
+    text-shadow: 3px 2px black;
+}
+
+.tu-reserva-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
 .chequear-reserva {
     margin: 50px;
     padding: 50px;
     border: 1px solid #db301d;
+    width: 50%;
 }
