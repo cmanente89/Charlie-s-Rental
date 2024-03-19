@@ -15,9 +15,8 @@ document.addEventListener("DOMContentLoaded", function () {
             infoReserva.innerHTML = `
                 <div id="info-reserva">
                     <p>Número de reserva: ${reservaEncontrada.numero}</p>
-                    <p>Fecha de reserva: ${reservaEncontrada.fecha}</p>
-                    <p>Estado: ${reservaEncontrada.estado}</p>
-                    <!-- Add more details if needed -->
+                    <p>Fecha de reserva: ${reservaEncontrada.fecha}</p> //agregar fecha
+                    <p>Estado: ${reservaEncontrada.estado}</p> //agregar un estado
                 </div>
             `;
         } else {
