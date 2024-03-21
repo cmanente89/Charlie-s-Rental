@@ -12,15 +12,48 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (reservaEncontrada) {
             const infoReserva = document.getElementById('info-reserva');
-            infoReserva.innerHTML = `
+
+
+
+
+
+            Swal.fire({
+                title: "Reserva Encontrada",
+                icon: "success",
+                html: `
                 <div id="info-reserva">
-                    <p>Número de reserva: ${reservaEncontrada.numero}</p>
-                    <p>Fecha de reserva: ${reservaEncontrada.fecha}</p> //agregar fecha
-                    <p>Estado: ${reservaEncontrada.estado}</p> //agregar un estado
-                </div>
-            `;
+                <p>Número de reserva: ${reservaEncontrada.numero}</p>
+                <p>Cantidad de bicis básicas: ${reservaEncontrada.cantidadBasica}</p>
+                <p>Horas de bicis básicas: ${reservaEncontrada.horasBasica}</p>
+                <p>Subtotal de bicis básicas: $${reservaEncontrada.subtotalBasica}</p>
+                <p>Cantidad de bicis premium: ${reservaEncontrada.cantidadPremium}</p>
+                <p>Horas de bicis premium: ${reservaEncontrada.horasPremium}</p>
+                <p>Subtotal de bicis premium: $${reservaEncontrada.subtotalPremium}</p>
+                <p><strong>Total: $${reservaEncontrada.total}</strong></p>
+
+                
+            
+                
+                
+                
+                
+                //agregar fecha
+                //agregar un estado
+
+            </div> `,
+                showCloseButton: false,
+                showCancelButton: false,
+                buttonStyling: false,
+                focusConfirm: false,//chequear que hace esto                
+            });
+
         } else {
-            alert("La reserva no fue encontrada.");
+            // alert("La reserva no fue encontrada.");
+            Swal.fire({
+                text: "La reserva no fue encontrada",
+                icon: "error"
+                //!modificar el estilo del OK?
+            });
         }
     }
 });
