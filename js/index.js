@@ -1,5 +1,7 @@
 
 
+//
+
 // Objetos
 const bicicletas = {
     "Básica": {
@@ -76,7 +78,7 @@ seleccionHorasPremium.addEventListener("change", () => {
 
 const botonCalcular = document.getElementById("boton-calcular");
 botonCalcular.addEventListener("click", () => {
-    //console.log("funciona");
+
 })
 
 //funcion para reservar
