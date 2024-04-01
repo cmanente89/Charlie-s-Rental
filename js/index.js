@@ -81,7 +81,24 @@ botonCalcular.addEventListener("click", () => {
 
 })
 
-//funcion para reservar
+//funciones
+
+
+
+function alertaReserva(retraso) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // simulo una condicion de error para incluir el reject
+            const falla = false; // cambiar a verdadero para simular un error
+
+            if (falla) {
+                reject('Falla carga del mensaje.');
+            } else {
+                resolve("¡Su reserva es un éxito!");
+            }
+        }, retraso);
+    });
+}
 
 function calcularReserva() {
     const checkedboxBasica = localStorage.getItem("checkedbox Basica") === "checked";
@@ -118,7 +135,7 @@ function calcularReserva() {
         const bikeBasica = bicicletas["Básica"];
         totalBasica = bikeBasica.precioHora * horasBasica * cantidadBasica;
         bikeBasica.stock -= cantidadBasica;
-        console.log(bicicletas["Básica"]["stock"]);
+        //console.log(bicicletas["Básica"]["stock"]);
         localStorage.setItem("stockBasica", bikeBasica.stock);
     }
 
@@ -127,7 +144,7 @@ function calcularReserva() {
         const bikePremium = bicicletas["Premium"];
         totalPremium = bikePremium.precioHora * horasPremium * cantidadPremium;
         bikePremium.stock -= cantidadPremium;
-        console.log(bicicletas["Premium"]["stock"]);
+        //console.log(bicicletas["Premium"]["stock"]);
         localStorage.setItem("stockPremium", bikePremium.stock);
     }
 
@@ -145,6 +162,8 @@ function calcularReserva() {
         horasPremium: horasPremium || 0,
         subtotalPremium: totalPremium,
         total: total
+
+
     };
 
 
@@ -152,22 +171,52 @@ function calcularReserva() {
     reservas.push(reservation);
     localStorage.setItem("reservas", JSON.stringify(reservas));
 
-    const reservationDetailsDiv = document.getElementById("reservation-details");
-    reservationDetailsDiv.innerHTML = `
-        <h3>Detalles de la Reserva</h3>
-        <p>Número de Reserva: ${reservation.numero}</p>
-        ${checkedboxBasica ? `<p>Tipo de Bicicleta Básica: ${reservation.tipoBasica}</p>
-        <p>Cantidad Básica: ${reservation.cantidadBasica}</p>
-        <p>Horas Básica: ${reservation.horasBasica}</p>
-        <p>Subtotal Básica: ${reservation.subtotalBasica}</p>` : ""}
-        ${checkedboxPremium ? `<p>Tipo de Bicicleta Premium: ${reservation.tipoPremium}</p>
-        <p>Cantidad Premium: ${reservation.cantidadPremium}</p>
-        <p>Horas Premium: ${reservation.horasPremium}</p>
-        <p>Subtotal Premium: ${reservation.subtotalPremium}</p>` : ""}
-        <p>Total: ${reservation.total}</p>
-    `;
+    // const reservationDetailsDiv = document.getElementById("reservation-details");
+    // reservationDetailsDiv.innerHTML = `
+    //     <h3>Detalles de la Reserva</h3>
+    //     <p>Número de Reserva: ${reservation.numero}</p>
+    //     ${checkedboxBasica ? `<p>Tipo de Bicicleta Básica: ${reservation.tipoBasica}</p>
+    //     <p>Cantidad Básica: ${reservation.cantidadBasica}</p>
+    //     <p>Horas Básica: ${reservation.horasBasica}</p>
+    //     <p>Subtotal Básica: ${reservation.subtotalBasica}</p>` : ""}
+    //     ${checkedboxPremium ? `<p>Tipo de Bicicleta Premium: ${reservation.tipoPremium}</p>
+    //     <p>Cantidad Premium: ${reservation.cantidadPremium}</p>
+    //     <p>Horas Premium: ${reservation.horasPremium}</p>
+    //     <p>Subtotal Premium: ${reservation.subtotalPremium}</p>` : ""}
+    //     <p>Total: ${reservation.total}</p>
+    // `;
 
 
+
+    alertaReserva(1500) // 1.5 segundos de retraso para el alert
+        .then(adContent => {
+            Swal.fire({
+                title: adContent,
+                icon: "success",
+                html: `
+                El número de reserva es: <b>${reservation.numero}</b>,<br/>
+                <br/>
+                ${checkedboxBasica ? `<p><b>Tipo de Bicicleta ${reservation.tipoBasica}:</b></p>
+                <p>Cantidad: ${reservation.cantidadBasica}</p>
+                <p>Horas: ${reservation.horasBasica}</p>
+                <p>Subtotal Básica: ${reservation.subtotalBasica}</p>` : ""}
+                ${checkedboxPremium ? `<p><b>Tipo de Bicicleta ${reservation.tipoPremium}:</b></p>
+                <p>Cantidad: ${reservation.cantidadPremium}</p>
+                <p>Horas: ${reservation.horasPremium}</p>
+                <p>Subtotal Premium: ${reservation.subtotalPremium}</p>` : ""}
+                <p>Total: ${reservation.total}</p>
+                Chequea su estado <a href="../html/tu-reserva.html">aquí</a>,`,
+                showCloseButton: true,
+                showCancelButton: false,
+                focusConfirm: false,
+                confirmButtonColor: "#db301d",
+
+            });
+        })
+        .catch(error => {
+            console.error(error);
+            alert("An error occurred while loading the ad.");
+        });
 }
 
 //boton para ejecutar la funcion de reserva
