@@ -81,10 +81,12 @@ botonCalcular.addEventListener("click", () => {
 
 })
 
+const botonClima = document.getElementById('get-weather-btn');
+
 //funciones
 
 
-
+//! mi idea para utilizar asincronia es mostrar la confirmacion y los datos de la reserva con cierto retrazo mediante un alert de sweet alert
 function alertaReserva(retraso) {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -118,7 +120,7 @@ function calcularReserva() {
             errorMessage.innerHTML = "La cantidad de bicicletas básicas seleccionada supera el stock disponible";
             return;
         }
-    }//VER DE METER UNA FUNCION PORQUE ESTO SE REPITE ABAJO
+    }
 
     if (checkedboxPremium) {
         const bikePremium = bicicletas["Premium"];
@@ -130,7 +132,7 @@ function calcularReserva() {
 
     errorMessage.innerHTML = "";
 
-    let totalBasica = 0;//VER DE METER UNA FUNCION PORQUE ESTO SE REPITE ABAJO
+    let totalBasica = 0;
     if (checkedboxBasica) {
         const bikeBasica = bicicletas["Básica"];
         totalBasica = bikeBasica.precioHora * horasBasica * cantidadBasica;
@@ -171,6 +173,7 @@ function calcularReserva() {
     reservas.push(reservation);
     localStorage.setItem("reservas", JSON.stringify(reservas));
 
+    //!esta seccion cargaba en el html los datos de la reserva, la reemplacé con un alert de sweetalert
     // const reservationDetailsDiv = document.getElementById("reservation-details");
     // reservationDetailsDiv.innerHTML = `
     //     <h3>Detalles de la Reserva</h3>
@@ -185,7 +188,6 @@ function calcularReserva() {
     //     <p>Subtotal Premium: ${reservation.subtotalPremium}</p>` : ""}
     //     <p>Total: ${reservation.total}</p>
     // `;
-
 
 
     alertaReserva(1500) // 1.5 segundos de retraso para el alert
@@ -210,18 +212,56 @@ function calcularReserva() {
                 showCancelButton: false,
                 focusConfirm: false,
                 confirmButtonColor: "#db301d",
-
             });
         })
         .catch(error => {
             console.error(error);
-            alert("An error occurred while loading the ad.");
+            alert("ocurrio un error al cargar.");
+        });
+
+
+
+}
+
+
+//! mi idea para usar fetch fue consultar la temperatura mediante la API de OpenWeatherMap
+function fetchWeather() {
+    const apiKey = "43319fed4ceaef4a314a1c482880740d";
+
+    const cityName = 'Bariloche';
+    const countryCode = 'AR';
+
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName},${countryCode}&appid=${apiKey}`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Datos no encontrados.');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const weatherDescription = data.weather[0].main;
+            const temperature = Math.floor(data.main.temp - 273.15); // convertir de kelvin a celsius
+            // alert quitado
+            Swal.fire({
+                title: "Clima en Bariloche hoy:",
+                text: `${weatherDescription}, ${temperature}°C`,
+                // icon: "question"
+                confirmButtonColor: "#db301d"
+            });
+        })
+        .catch(error => {
+            console.error('Error cargando los datos:', error);
         });
 }
+
 
 //boton para ejecutar la funcion de reserva
 
 botonCalcular.addEventListener("click", calcularReserva);
+
+//boton clima
+
+botonClima.addEventListener('click', fetchWeather);
 
 
 
