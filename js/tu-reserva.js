@@ -13,10 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (reservaEncontrada) {
             const infoReserva = document.getElementById('info-reserva');
 
-
-
-
-
             Swal.fire({
                 title: "Reserva Encontrada",
                 icon: "success",
@@ -30,29 +26,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 <p>Horas de bicis premium: ${reservaEncontrada.horasPremium}</p>
                 <p>Subtotal de bicis premium: $${reservaEncontrada.subtotalPremium}</p>
                 <p><strong>Total: $${reservaEncontrada.total}</strong></p>
-
-                
-            
-                
-                
-                
-                
-                //agregar fecha
-                //agregar un estado
-
             </div> `,
                 showCloseButton: false,
                 showCancelButton: false,
                 buttonStyling: false,
-                focusConfirm: false,//chequear que hace esto                
+                focusConfirm: false,//chequear que hace esto
+                confirmButtonColor: "#db301d",
             });
 
         } else {
             // alert("La reserva no fue encontrada.");
             Swal.fire({
                 text: "La reserva no fue encontrada",
-                icon: "error"
-                //!modificar el estilo del OK?
+                icon: "error",
+                confirmButtonColor: "#db301d",
             });
         }
     }

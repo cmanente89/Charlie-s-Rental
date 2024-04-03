@@ -1,7 +1,4 @@
 //mostrar stock en nuestras-bicis.html
-//USAR EL BOTON PARA MOSTRAR STOCK, deultima poner otro boton que linkee a la reserva
-//ver como lograr que al cargar la pagina ya muestre el stock de ambas bicis, no funciona a menos que haya primero hecho alguna reserva
-
 
 document.addEventListener("DOMContentLoaded", function () {
     const stockBasica = localStorage.getItem("stockBasica");

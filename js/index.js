@@ -1,7 +1,5 @@
 
 
-//
-
 // Objetos
 const bicicletas = {
     "Básica": {
@@ -34,21 +32,18 @@ const checkboxBasica = document.getElementById("check-basica");
 
 checkboxBasica.addEventListener("change", function () {
     const isChecked = checkboxBasica.checked;
-    //console.log("Checkbox checked:", isChecked);
     localStorage.setItem("checkedbox Basica", "checked")
 });
 
 const seleccionCantidadBasica = document.getElementById("seleccion-cantidad-basica");
 seleccionCantidadBasica.addEventListener("change", () => {
     const cantidad = parseInt(seleccionCantidadBasica.value);
-    //console.log("Cantidad de bicicletas:", cantidad);
     localStorage.setItem("cantidadBicicletasBasica", cantidad);
 });
 
 const seleccionHorasBasica = document.getElementById("seleccion-horas-basica");//por que sin el value? ver diferencia con el anterior
 seleccionHorasBasica.addEventListener("change", () => {
     const horas = seleccionHorasBasica.value;
-    //console.log(horas);
     localStorage.setItem("horasSeleccionadasBasica", horas);
 });
 
@@ -57,21 +52,18 @@ const checkboxPremium = document.getElementById("check-premium");
 
 checkboxPremium.addEventListener("change", function () {
     const isChecked = checkboxPremium.checked;
-    //console.log("Checkbox checked:", isChecked);
     localStorage.setItem("checkedbox Premium", "checked")
 });
 
 const seleccionCantidadPremium = document.getElementById("seleccion-cantidad-premium");
 seleccionCantidadPremium.addEventListener("change", () => {
     const cantidad = parseInt(seleccionCantidadPremium.value);
-    //console.log("Cantidad de bicicletas:", cantidad);
     localStorage.setItem("cantidadBicicletasPremium", cantidad);
 });
 
 const seleccionHorasPremium = document.getElementById("seleccion-horas-premium");//por que sin el value? ver diferencia con el anterior
 seleccionHorasPremium.addEventListener("change", () => {
     const horas = seleccionHorasPremium.value;
-    //console.log(horas);
     localStorage.setItem("horasSeleccionadasPremium", horas);
 });
 
@@ -137,7 +129,6 @@ function calcularReserva() {
         const bikeBasica = bicicletas["Básica"];
         totalBasica = bikeBasica.precioHora * horasBasica * cantidadBasica;
         bikeBasica.stock -= cantidadBasica;
-        //console.log(bicicletas["Básica"]["stock"]);
         localStorage.setItem("stockBasica", bikeBasica.stock);
     }
 
@@ -146,7 +137,6 @@ function calcularReserva() {
         const bikePremium = bicicletas["Premium"];
         totalPremium = bikePremium.precioHora * horasPremium * cantidadPremium;
         bikePremium.stock -= cantidadPremium;
-        //console.log(bicicletas["Premium"]["stock"]);
         localStorage.setItem("stockPremium", bikePremium.stock);
     }
 
@@ -201,12 +191,12 @@ function calcularReserva() {
                 ${checkedboxBasica ? `<p><b>Tipo de Bicicleta ${reservation.tipoBasica}:</b></p>
                 <p>Cantidad: ${reservation.cantidadBasica}</p>
                 <p>Horas: ${reservation.horasBasica}</p>
-                <p>Subtotal Básica: ${reservation.subtotalBasica}</p>` : ""}
+                <p>Subtotal Básica: $${reservation.subtotalBasica}</p>` : ""}
                 ${checkedboxPremium ? `<p><b>Tipo de Bicicleta ${reservation.tipoPremium}:</b></p>
                 <p>Cantidad: ${reservation.cantidadPremium}</p>
                 <p>Horas: ${reservation.horasPremium}</p>
-                <p>Subtotal Premium: ${reservation.subtotalPremium}</p>` : ""}
-                <p>Total: ${reservation.total}</p>
+                <p>Subtotal Premium: $${reservation.subtotalPremium}</p>` : ""}
+                <p>Total: $${reservation.total}</p>
                 Chequea su estado <a href="../html/tu-reserva.html">aquí</a>,`,
                 showCloseButton: true,
                 showCancelButton: false,
@@ -241,7 +231,6 @@ function fetchWeather() {
         .then(data => {
             const weatherDescription = data.weather[0].main;
             const temperature = Math.floor(data.main.temp - 273.15); // convertir de kelvin a celsius
-            // alert quitado
             Swal.fire({
                 title: "Clima en Bariloche hoy:",
                 text: `${weatherDescription}, ${temperature}°C`,
