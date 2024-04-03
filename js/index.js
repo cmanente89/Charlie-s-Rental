@@ -109,7 +109,13 @@ function calcularReserva() {
     if (checkedboxBasica) {
         const bikeBasica = bicicletas["Básica"];
         if (cantidadBasica > bikeBasica.stock) {
-            errorMessage.innerHTML = "La cantidad de bicicletas básicas seleccionada supera el stock disponible";
+            // errorMessage.innerHTML = "La cantidad de bicicletas básicas seleccionada supera el stock disponible"; cambio el innerHTML x un sweet alert
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "La cantidad de bicicletas básicas seleccionada supera el stock disponible",
+                // footer: '<a href="#">Why do I have this issue?</a>'
+            });
             return;
         }
     }
@@ -117,7 +123,13 @@ function calcularReserva() {
     if (checkedboxPremium) {
         const bikePremium = bicicletas["Premium"];
         if (cantidadPremium > bikePremium.stock) {
-            errorMessage.innerHTML = "La cantidad de bicicletas premium seleccionada supera el stock disponible";
+            // errorMessage.innerHTML = "La cantidad de bicicletas premium seleccionada supera el stock disponible"; cambio el innerHTML x un sweet alert
+            Swal.fire({
+                icon: "error",
+                title: "Error",
+                text: "La cantidad de bicicletas premium seleccionada supera el stock disponible",
+                // footer: '<a href="#">Why do I have this issue?</a>'
+            });
             return;
         }
     }
@@ -157,8 +169,6 @@ function calcularReserva() {
 
 
     };
-
-
 
     reservas.push(reservation);
     localStorage.setItem("reservas", JSON.stringify(reservas));
@@ -208,9 +218,6 @@ function calcularReserva() {
             console.error(error);
             alert("ocurrio un error al cargar.");
         });
-
-
-
 }
 
 
